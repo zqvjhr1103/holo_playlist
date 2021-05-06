@@ -1,16 +1,10 @@
-.App-header {
+.playPlayList-youtube {
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.App-main {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.App-button {
+.playPlayList-button {
   display: flex;
   justify-content: space-evenly;
 }

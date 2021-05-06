@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../assets/playPlayList.css";
 
 import YouTube from 'react-youtube';
 
@@ -11,12 +12,13 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 
 import ListButton from "../components/listButton.js";
+import BackNextButton from "../components/backNextButton.js"
 
 class PlayPlayList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isPlaying: false,
+            isPlaying: true,
             videoID: null,
             opts: {
                 height: '180',
@@ -40,6 +42,7 @@ class PlayPlayList extends Component {
 
     setMusic(index) {
         this.setState({
+            musicName: this.props.playList[index].musicName,
             videoID: this.props.playList[index].videoID,
             opts: {
                 height: '180',
@@ -68,12 +71,6 @@ class PlayPlayList extends Component {
     _onReady(event) {
         console.debug("onReady. Length:" + event.target.getDuration())
         console.debug("isPlay is " + this.state.isPlaying)
-        // 初回プレイリスト選択時
-        if (event.target.getDuration() === 0) {
-            this.setMusic(0)
-            return;
-        }
-        // 二回目以降プレイリスト選択時（再生中にダイアログ閉じるとtureのまま）
         if (this.state.isPlaying === true) {
             this.playStop()
             this.setMusic(0)
@@ -105,9 +102,28 @@ class PlayPlayList extends Component {
         }
     }
 
+    onClickBackNext(type) {
+        this.playStop()
+        if (type === "Back") {
+            if (-1 === this.state.currentIndex - 1) {
+                this.setMusic(this.props.playList.length - 1)
+            } else {
+                this.setMusic(this.state.currentIndex - 1)
+            }
+        }
+        if (type === "Next") {
+            if (this.props.playList.length === this.state.currentIndex + 1) {
+                this.setMusic(0)
+            } else {
+                this.setMusic(this.state.currentIndex + 1)
+            }
+        }
+    }
+
     render() {
         return (
             <Dialog
+
                 fullScreen
                 open={this.props.open}
                 onClose={this.props.onClose}
@@ -115,7 +131,7 @@ class PlayPlayList extends Component {
                 disableBackdropClick="false"
                 disableEscapeKeyDown="false"
             >
-                <div>
+                <div id="dialog-top">
                     <AppBar position="fixed" color="default">
                         <Toolbar>
                             <IconButton edge="start" color="inherit" onClick={this.props.onClose}>
@@ -128,12 +144,7 @@ class PlayPlayList extends Component {
                     </AppBar>
                     <Toolbar />
                 </div>
-                <div style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center"
-                }}
-                >
+                <div className="playPlayList-youtube">
                     <DialogContent dividers="true">
                         <YouTube
                             videoId={this.state.videoID}
@@ -147,11 +158,17 @@ class PlayPlayList extends Component {
                                 this._onStateChange(event, this.state.currentIndex);
                             }}
                         />
+                        <div className="playPlayList-button">
+                            <BackNextButton type={"Back"} onClickBackNext={() => { this.onClickBackNext("Back"); }} />
+                            {this.state.musicName}
+                            <BackNextButton type={"Next"} onClickBackNext={() => { this.onClickBackNext("Next"); }} />
+                        </div>
                         {this.props.playList.map((item, index) => {
                             return (
                                 <ListButton
                                     listName={item.musicName}
                                     onEventSelectList={() => {
+                                        document.getElementById('dialog-top').scrollIntoView(true)
                                         this.playStop()
                                         this.setMusic(index);
                                     }}

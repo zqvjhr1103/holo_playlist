@@ -5,12 +5,14 @@ import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 
 import SelectPlayList from "./containers/selectPlayList.js";
-import AddPlayList from "./components/addPlayList.js"
+import AddButton from "./components/addButton.js"
+import AllDeleteButton from "./components/allDeleteButton.js"
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      flagCheckDialg: false,
       playLists: JSON.parse(localStorage.getItem("playLists")) || [
         {
           playListName: "No playlist",
@@ -18,23 +20,19 @@ class App extends Component {
         }
       ]
     };
-    if (false) {
-      localStorage.clear();
-    }
   }
 
   addPlayList(e) {
     const files = e.target.files;
-    var flag = true;
-    this.state.playLists.forEach((item) => {
-      if (item.playListName === files[0].name.split(".")[0]) {
-        flag = false
-      }
-    })
     var playLists = []
-    if (this.state.playLists[0].playList.length !== 0 && flag) {
+    if (this.state.playLists[0].playList.length !== 0) {
       playLists = this.state.playLists
     }
+    this.state.playLists.forEach((item, index) => {
+      if (item.playListName === files[0].name.split(".")[0]) {
+        playLists.splice(index, 1);
+      }
+    })
     var playList = []
     if (files.length > 0) {
       var reader = new FileReader();
@@ -47,8 +45,13 @@ class App extends Component {
           return;
         }
         array.shift()
+        var readFlag = true
         array.forEach((item) => {
-          if (item !== "") {
+          if (item.match(/\bPLAYLIST_END_POINT\b/) !== null) {
+            console.debug("Read PLAYLIST_END_POINT")
+            readFlag = false
+          }
+          if (readFlag === true) {
             playList.push({
               musicName: item.split(",")[0],
               videoID: item.split(",")[1],
@@ -66,9 +69,29 @@ class App extends Component {
           playLists: playLists
         });
         localStorage.clear();
+        window.location.reload()
         localStorage.setItem("playLists", JSON.stringify(playLists));
       };
     }
+  }
+
+  handleCheckDialog() {
+    this.setState({
+      flagCheckDialg: !this.state.flagCheckDialg
+    })
+  }
+
+  onClickDeleteAll() {
+    this.setState({
+      playLists: [
+        {
+          playListName: "No playlist",
+          playList: []
+        }
+      ]
+    })
+    localStorage.clear();
+    window.location.reload()
   }
 
   render() {
@@ -83,10 +106,17 @@ class App extends Component {
         </header>
         <main className="App-main">
           <SelectPlayList playLists={this.state.playLists} />
-          <AddPlayList
-            onClickAddPlayList={(e) => {
-              this.addPlayList(e)
-            }} />
+          <div className="App-button">
+            <AddButton
+              onClickAddPlayList={(e) => {
+                this.addPlayList(e)
+              }} />
+            <AllDeleteButton
+              handleCheckDialog={() => { this.handleCheckDialog(); }}
+              onClickDeleteAll={() => { this.onClickDeleteAll(); }}
+              flagCheckDialg={this.state.flagCheckDialg}
+            />
+          </div>
         </main>
       </div>
     );

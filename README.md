@@ -1,3 +1,7 @@
 # holo_playlist
 
-Hololive menber Singing and Original Song PlayList
+I wanted to create a playlist of Uta-Waku.
+
+However, youtube did not have a timed playlist.
+
+So, I created this site.

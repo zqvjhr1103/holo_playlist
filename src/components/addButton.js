@@ -29,7 +29,7 @@ const styles = theme => ({
     }
 });
 
-const AddPlayList = props => {
+const AddButton = props => {
     const { classes } = props;
     return (
         <div className={classes.root}>
@@ -55,4 +55,4 @@ const AddPlayList = props => {
     );
 };
 
-export default withStyles(styles)(AddPlayList);
+export default withStyles(styles)(AddButton);
