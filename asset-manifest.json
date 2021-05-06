@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/holo_playlist/static/css/main.ad23e841.chunk.css",
-    "main.js": "/holo_playlist/static/js/main.f8ade452.chunk.js",
-    "main.js.map": "/holo_playlist/static/js/main.f8ade452.chunk.js.map",
+    "main.css": "/holo_playlist/static/css/main.c2b28fba.chunk.css",
+    "main.js": "/holo_playlist/static/js/main.77c1e602.chunk.js",
+    "main.js.map": "/holo_playlist/static/js/main.77c1e602.chunk.js.map",
     "runtime-main.js": "/holo_playlist/static/js/runtime-main.0a77d8f2.js",
     "runtime-main.js.map": "/holo_playlist/static/js/runtime-main.0a77d8f2.js.map",
-    "static/js/2.a5eb09d4.chunk.js": "/holo_playlist/static/js/2.a5eb09d4.chunk.js",
-    "static/js/2.a5eb09d4.chunk.js.map": "/holo_playlist/static/js/2.a5eb09d4.chunk.js.map",
+    "static/js/2.78e45ebf.chunk.js": "/holo_playlist/static/js/2.78e45ebf.chunk.js",
+    "static/js/2.78e45ebf.chunk.js.map": "/holo_playlist/static/js/2.78e45ebf.chunk.js.map",
     "index.html": "/holo_playlist/index.html",
-    "static/css/main.ad23e841.chunk.css.map": "/holo_playlist/static/css/main.ad23e841.chunk.css.map",
-    "static/js/2.a5eb09d4.chunk.js.LICENSE.txt": "/holo_playlist/static/js/2.a5eb09d4.chunk.js.LICENSE.txt"
+    "static/css/main.c2b28fba.chunk.css.map": "/holo_playlist/static/css/main.c2b28fba.chunk.css.map",
+    "static/js/2.78e45ebf.chunk.js.LICENSE.txt": "/holo_playlist/static/js/2.78e45ebf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0a77d8f2.js",
-    "static/js/2.a5eb09d4.chunk.js",
-    "static/css/main.ad23e841.chunk.css",
-    "static/js/main.f8ade452.chunk.js"
+    "static/js/2.78e45ebf.chunk.js",
+    "static/css/main.c2b28fba.chunk.css",
+    "static/js/main.77c1e602.chunk.js"
   ]
 }
