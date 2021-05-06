@@ -56,6 +56,7 @@ class PlayPlayList extends Component {
                     fs: 0,              // 全画面表示ボタン非表示
                     iv_load_policy: 3,  // アノテーション非表示
                     modestbranding: 1,  // YouTubeロゴ非表示
+                    playsinline: 1,     // iOSの全画面表示再生オフ
                     rel: 0,             // 再生した動画と同じチャンネルから関連動画を選択
                     showinfo: 0,        // タイトルやユーザー情報を非表示（2018年9月25日以降は利用不可）
                     // 動画の先頭から指定された秒数分進めた位置から動画の再生が開始
@@ -78,6 +79,8 @@ class PlayPlayList extends Component {
         }
         this.playStart()
         // https://developers.google.com/youtube/iframe_api_reference?hl=ja
+        //event.target.mute()
+        event.target.playVideo()
         event.target.setPlaybackQuality("small");
         event.target.setVolume(50);
     }
