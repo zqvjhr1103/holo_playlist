@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/holo_playlist/static/css/main.c2b28fba.chunk.css",
-    "main.js": "/holo_playlist/static/js/main.84b20798.chunk.js",
-    "main.js.map": "/holo_playlist/static/js/main.84b20798.chunk.js.map",
+    "main.js": "/holo_playlist/static/js/main.d117b45e.chunk.js",
+    "main.js.map": "/holo_playlist/static/js/main.d117b45e.chunk.js.map",
     "runtime-main.js": "/holo_playlist/static/js/runtime-main.0a77d8f2.js",
     "runtime-main.js.map": "/holo_playlist/static/js/runtime-main.0a77d8f2.js.map",
     "static/js/2.78e45ebf.chunk.js": "/holo_playlist/static/js/2.78e45ebf.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.0a77d8f2.js",
     "static/js/2.78e45ebf.chunk.js",
     "static/css/main.c2b28fba.chunk.css",
-    "static/js/main.84b20798.chunk.js"
+    "static/js/main.d117b45e.chunk.js"
   ]
 }
