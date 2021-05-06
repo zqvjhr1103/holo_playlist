@@ -79,8 +79,9 @@ class PlayPlayList extends Component {
         }
         this.playStart()
         // https://developers.google.com/youtube/iframe_api_reference?hl=ja
-        //event.target.mute()
+        event.target.mute()
         event.target.playVideo()
+        event.target.unMute()
         event.target.setPlaybackQuality("small");
         event.target.setVolume(50);
     }
