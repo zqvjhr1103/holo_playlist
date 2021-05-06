@@ -81,7 +81,6 @@ class PlayPlayList extends Component {
         // https://developers.google.com/youtube/iframe_api_reference?hl=ja
         event.target.mute()
         event.target.playVideo()
-        event.target.unMute()
         event.target.setPlaybackQuality("small");
         event.target.setVolume(50);
     }
@@ -102,6 +101,11 @@ class PlayPlayList extends Component {
                 this.setMusic(0)
             } else {
                 this.setMusic(index + 1)
+            }
+        }
+        if (event.data === 1) {
+            if (event.target.isMuted() == true) {
+                event.target.unMute()
             }
         }
     }
