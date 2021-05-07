@@ -14,7 +14,7 @@ File contents:
 
     Password
 
-    musicname,videoID,startTime,endTime
+    musicName,videoID,startTime,endTime
 
                     ⋮
 
