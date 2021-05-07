@@ -80,20 +80,10 @@ class PlayPlayList extends Component {
         }
         this.playStart()
         // https://developers.google.com/youtube/iframe_api_reference?hl=ja
-        if (this.state.ua.indexOf("iphone") === -1
-            && this.state.ua.indexOf("ipad") === -1) {
-            console.debug("Not iOS process")
-            event.target.playVideo()
-            event.target.setPlaybackQuality("small");
-            event.target.setVolume(50);
-            return
-        }
-        console.debug("iOS process")
-        event.target.mute()
         event.target.playVideo()
         event.target.setPlaybackQuality("small");
         event.target.setVolume(50);
-        event.target.seekTo(this.state.opts.playerVars.end - 1)
+
     }
 
     _onError(event) {
@@ -107,15 +97,6 @@ class PlayPlayList extends Component {
     _onStateChange(event, index) {
         console.debug("onStateChange:" + event.data)
         if (event.data === 0) {
-            if (this.state.ua.indexOf("iphone") !== -1
-                || this.state.ua.indexOf("ipad") !== -1) {
-                if (event.target.isMuted() === true) {
-                    event.target.unMute()
-                    event.target.seekTo(this.state.opts.playerVars.start)
-                    event.target.playVideo()
-                    return
-                }
-            }
             this.playStop()
             if (this.props.playList.length === index + 1) {
                 this.setMusic(0)
